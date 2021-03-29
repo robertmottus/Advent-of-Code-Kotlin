@@ -21,10 +21,9 @@ fun noAllergenIngredients(foodList: List<Food>): Set<String> {
     return allIng.minus(allergenIng)
 }
 
-
-fun potentialAllergenIngredients(foodList: List<Food>): Map<String,Set<String>> {
+fun potentialAllergenIngredients(foods: List<Food>): Map<String,Set<String>> {
     val potentialAllergenIngredients = mutableMapOf<String, Set<String>>()
-    for(food in foodList) {
+    for(food in foods) {
         for(allergen in food.allergens) {
             if(potentialAllergenIngredients.contains(allergen)) {
                 // reducera
@@ -35,6 +34,26 @@ fun potentialAllergenIngredients(foodList: List<Food>): Map<String,Set<String>> 
         }
     }
     return potentialAllergenIngredients
+}
+
+fun allergenIngredients(foods: List<Food>): Map<String,String> {
+    val allergenIngredientsLeftToHandle = potentialAllergenIngredients(foods).toMutableMap()
+    //    val allergenIngredients = mutableMapOf<String,Set<String>>()
+    val certainAllergenIngredients = mutableMapOf<String,String>()
+    do{
+        val certainAllergenIngredientsNow = allergenIngredientsLeftToHandle.filter { e -> e.value.size == 1 }.map{ e -> e.key to e.value.first()}.toMap()
+        certainAllergenIngredients.putAll(certainAllergenIngredientsNow)
+        certainAllergenIngredients.forEach{allergenIngredientsLeftToHandle.remove(key = it.key)}
+        for(alllergenIngrds in certainAllergenIngredients) {
+            for(leftToHndl in allergenIngredientsLeftToHandle) {
+                allergenIngredientsLeftToHandle.replace(leftToHndl.key,
+                    leftToHndl.value.minus(alllergenIngrds.value)
+                )
+            }
+        }
+    } while (allergenIngredientsLeftToHandle.size > 0)
+
+    return certainAllergenIngredients
 }
 
 fun ingredientFrequency(foodList: List<Food>): Map<String, Int> {
@@ -50,3 +69,4 @@ fun ingredientFrequency(foodList: List<Food>): Map<String, Int> {
 fun frequencyOfNonAllergenIngredients(nonAllergenIngredients: Set<String>, ingredientFreq: Map<String,Int>): Int {
     return nonAllergenIngredients.map{i -> ingredientFreq.get(i)}.fold(0){a,n -> a+n!!}
 }
+

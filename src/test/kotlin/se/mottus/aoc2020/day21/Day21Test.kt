@@ -9,7 +9,7 @@ internal class Day21Test {
     val testInput = toFood(readResource("se/mottus/aoc2020/day21/test-puzzleinput.txt"))
 
     @Test
-    internal fun inputToFoodTest() {
+    fun inputToFoodTest() {
         val exptectedFoods = listOf(
             Food(ingredients = setOf("mxmxvkd", "kfcds", "sqjhc", "nhms"), allergens = setOf("dairy", "fish")),
             Food(ingredients = setOf("trh", "fvjkl", "sbzzf", "mxmxvkd"), allergens = setOf ("dairy"))
@@ -32,27 +32,49 @@ internal class Day21Test {
 
     @Test
     internal fun potentialAllergenIngredientsTest() {
-//        val potentialIngredientsContainingFish = setOf("mxmxvkd", "kfcds", "sqjhc", "nhms", "sqjhc", "mxmxvkd", "sbzzf")
-        val potentialIngredientsContainingFish = setOf("mxmxvkd", "sqjhc")
-        Assertions.assertEquals(potentialIngredientsContainingFish, potentialAllergenIngredients(testInput).get("fish"))
-        Assertions.assertTrue(potentialAllergenIngredients(testInput).get("fish")!!.containsAll(potentialIngredientsContainingFish))
+        Assertions.assertEquals(setOf("mxmxvkd", "sqjhc"), potentialAllergenIngredients(testInput).get("fish"))
+        Assertions.assertEquals(setOf("mxmxvkd"), potentialAllergenIngredients(testInput).get("dairy"))
+        Assertions.assertEquals(setOf("sqjhc", "fvjkl"), potentialAllergenIngredients(testInput).get("soy"))
     }
 
     @Test
-    internal fun noAllergenIngredientsTest() {
+    fun noAllergenIngredientsTest() {
         val noAllergenIngredients = setOf("kfcds", "nhms", "sbzzf", "trh")
         Assertions.assertEquals(noAllergenIngredients, noAllergenIngredients(testInput))
     }
 
     @Test
-    internal fun part1DevTest() {
+    fun allergIngredsTest() {
+        //mxmxvkd contains dairy.
+        //sqjhc contains fish.
+        //fvjkl contains soy.
+        val ingredients = allergenIngredients(testInput)
+        Assertions.assertEquals("mxmxvkd", ingredients.get("dairy"))
+        Assertions.assertEquals("sqjhc", ingredients.get("fish"))
+        Assertions.assertEquals("fvjkl", ingredients.get("soy"))
+    }
+
+    @Test
+    fun part1DevTest() {
         assertEquals(5, frequencyOfNonAllergenIngredients(noAllergenIngredients(testInput), ingredientFrequency(testInput)))
     }
 
     @Test
-    internal fun part1AccTest() {
+    fun part1AccTest() {
         val foods = toFood(readResource("se/mottus/aoc2020/day21/puzzleinput.txt"))
         assertEquals(2517, frequencyOfNonAllergenIngredients(noAllergenIngredients(foods), ingredientFrequency(foods)))
+    }
+
+    @Test
+    fun part2DevTest() {
+        val ingredients = allergenIngredients(testInput).toSortedMap().values.joinToString(",")
+        assertEquals("mxmxvkd,sqjhc,fvjkl", ingredients)
+    }
+
+    @Test
+    fun part2AccTest() {
+        val ingredients = allergenIngredients(toFood(readResource("se/mottus/aoc2020/day21/puzzleinput.txt"))).toSortedMap().values.joinToString(",")
+        assertEquals("rhvbn,mmcpg,kjf,fvk,lbmt,jgtb,hcbdb,zrb", ingredients)
     }
 }
 
