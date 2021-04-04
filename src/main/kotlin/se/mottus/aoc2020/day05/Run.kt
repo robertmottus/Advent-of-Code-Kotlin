@@ -10,10 +10,18 @@ import kotlin.time.measureTimedValue
 fun main() {
     val puzzleinput = readResource({}::class.java.`package`.name, "puzzleinput.txt")
 
-    val(result1, time1) = measureTimedValue {part1(puzzleinput)}
-    println("Part1 result: $result1, took $time1 ms")
+    runTimelogged("Part1 normal") {part1(puzzleinput)}
+    runTimelogged("Part1 normal") {part1(puzzleinput)}
+    runTimelogged("Part1 optim ") {part1_optimized(puzzleinput) }
+    runTimelogged("Part1 optim ") {part1_optimized(puzzleinput) }
 
-    val(result2, time2) = measureTimedValue { part2(puzzleinput) }
-    println("Part2 result: $result2, took $time2 ms")
+    runTimelogged("Part2") {part2(puzzleinput)}
+    runTimelogged("Part2") {part2(puzzleinput)}
+}
+
+@ExperimentalTime
+fun runTimelogged(blockName: String, block: () -> Unit) {
+    val(result, time1) = measureTimedValue(block)
+    println("$blockName result: $result, took $time1 ms")
 }
 

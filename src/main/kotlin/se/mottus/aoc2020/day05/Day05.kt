@@ -1,8 +1,18 @@
 package se.mottus.aoc2020.day05
 
+import java.lang.Math.max
 import java.lang.Math.pow
 
 fun part1(input: List<String>): Int = seatIds(input).maxOrNull()!!
+
+fun part1_optimized(input: List<String>): Int {
+    input.map { str2Seat(it) }.fold(0){acc, seat ->
+        val seatId = seatId(seat)
+        return max(acc, seatId)
+    }
+
+    return seatIds(input).maxOrNull()!!
+}
 
 fun part2(input: List<String>): Int =
     seatIds(input).sorted().zipWithNext().fold(0) { acc, seatPair -> if(seatPair.second - seatPair.first == 2) seatPair.first+1 else acc}
