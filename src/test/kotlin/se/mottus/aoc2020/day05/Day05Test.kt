@@ -13,6 +13,12 @@ internal class Day05Test {
     }
 
     @Test
+    fun accPart2Test() {
+        val input = readResource("se/mottus/aoc2020/day05/puzzleinput.txt")
+        assertEquals(565, part2(input))
+    }
+
+    @Test
     fun devPart1Test() {
         val input = readResource("se/mottus/aoc2020/day05/test-puzzleinput.txt")
         assertEquals(820, part1(input))
