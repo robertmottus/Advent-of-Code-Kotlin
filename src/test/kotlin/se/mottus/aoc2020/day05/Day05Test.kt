@@ -39,4 +39,9 @@ internal class Day05Test {
         assertEquals(70, position("BFFFBBF", "FB"))
     }
 
+    @Test
+    fun position2Test() {
+        assertEquals(70, positionOld("BFFFBBF", "FB"))
+    }
+
 }
