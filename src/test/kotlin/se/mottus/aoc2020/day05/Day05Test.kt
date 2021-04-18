@@ -37,6 +37,8 @@ internal class Day05Test {
     @Test
     fun positionTest() {
         assertEquals(70, position("BFFFBBF", "FB"))
+        assertEquals(7, position("RRR", "LR"))
+        assertEquals(4, position("100", "01"))
     }
 
     @Test

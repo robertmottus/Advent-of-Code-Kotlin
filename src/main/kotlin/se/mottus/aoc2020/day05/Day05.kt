@@ -6,9 +6,15 @@ import java.lang.Math.pow
 fun part1(input: List<String>): Int = seatIds(input).maxOrNull()!!
 
 fun part2(input: List<String>): Int =
-    seatIds(input).sorted().zipWithNext().fold(0) { acc, seatPair -> if(seatPair.second - seatPair.first == 2) seatPair.first+1 else acc}
+    seatIds(input)
+        .sorted()
+        .zipWithNext()
+        .fold(0) { acc, seatPair -> if(seatPair.second - seatPair.first == 2) seatPair.first+1 else acc}
 
-private fun seatIds(input: List<String>):List<Int> = input.map { str2Seat(it) }.map { seatId(it) }
+private fun seatIds(input: List<String>):List<Int> =
+    input
+        .map { str2Seat(it) }
+        .map { seatId(it) }
 
 fun seatId(seat: Pair<Int, Int>): Int = seat.first * 8 + seat.second
 
