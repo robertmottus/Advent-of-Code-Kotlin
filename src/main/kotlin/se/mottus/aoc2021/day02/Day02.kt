@@ -46,9 +46,9 @@ data class Position(val horizontalPosition: Int, val depth: Int) {
     It increases your horizontal position by X units.
     It increases your depth by your aim multiplied by X. */
 data class PositionAndAim(val horizontalPosition: Int, val depth: Int, val aim: Int) {
-    fun forward(x: Int): PositionAndAim = PositionAndAim(horizontalPosition + x, depth + aim * x, aim)
-    fun up(x: Int): PositionAndAim = PositionAndAim(horizontalPosition, depth, aim - x)
-    fun down(x: Int): PositionAndAim = PositionAndAim(horizontalPosition, depth, aim + x)
+    fun forward(x: Int): PositionAndAim = this.copy(horizontalPosition = horizontalPosition + x, depth = depth + aim * x)
+    fun up(x: Int): PositionAndAim = this.copy(aim = aim - x)
+    fun down(x: Int): PositionAndAim = this.copy(aim = aim + x)
     fun execute(action: String): PositionAndAim {
         val actionType = action.split(" ")[0]
         val x = action.split(" ")[1].toInt()
