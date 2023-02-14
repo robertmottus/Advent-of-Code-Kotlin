@@ -12,8 +12,13 @@ internal class Day02KtTest {
 
 
     @Test
-    fun inputLinesToScoreTest() {
-        assertEquals(15, linesToScore(testInput))
+    fun inputLinesToScorePart1Test() {
+        assertEquals(15, linesToScoresPart1(testInput))
+    }
+
+    @Test
+    fun inputLinesToScorePart2Test() {
+        assertEquals(12, linesToScoresPart2(testInput))
     }
 
     @Test
@@ -27,9 +32,9 @@ internal class Day02KtTest {
     @Test
     fun stringPart1ToShapeTest() {
         // X for Rock, Y for Paper, and Z for Scissors in Part 1
-        assertEquals(Shape.ROCK, shapePart1("X"))
-        assertEquals(Shape.PAPER, shapePart1("Y"))
-        assertEquals(Shape.SCISSORS, shapePart1("Z"))
+        assertEquals(Shape.ROCK, myShapePart1("X"))
+        assertEquals(Shape.PAPER, myShapePart1("Y"))
+        assertEquals(Shape.SCISSORS, myShapePart1("Z"))
     }
 
     @Test

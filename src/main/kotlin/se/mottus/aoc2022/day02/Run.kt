@@ -9,7 +9,10 @@ fun main() {
     val puzzleinput = readResourceAsLines({}::class.java.`package`.name, "puzzleinput.txt")
 
     val(result1, time1) = measureTimedValue {part1(puzzleinput)}
-    println("Part1 result: $result1, took $time1 ms") // 14069 (12 ms)
+    println("Part1 result: $result1, took $time1 ms") // 14069 (10 ms)
+
+    val(result2, time2) = measureTimedValue {part2(puzzleinput)}
+    println("Part2 result: $result2, took $time2 ms") // 12411 (5 ms)
 
 }
 
