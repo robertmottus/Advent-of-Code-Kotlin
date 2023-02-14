@@ -3,7 +3,7 @@ package se.mottus.aoc2020.day10.part1
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
-import se.mottus.aoc2020.readResource
+import se.mottus.util.readResourceAsLines
 
 internal class Part1Test {
 
@@ -22,7 +22,7 @@ internal class Part1Test {
 
     @Test
     fun accPart1Test() {
-        val puzzleinput = readResource("se/mottus/aoc2020/day10/puzzleinput.txt")
+        val puzzleinput = readResourceAsLines("se/mottus/aoc2020/day10/puzzleinput.txt")
         assertEquals(1820, part1(puzzleinput))
     }
 

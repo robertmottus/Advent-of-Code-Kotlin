@@ -2,25 +2,25 @@ package se.mottus.aoc2020.day05
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import se.mottus.aoc2020.readResource
+import se.mottus.util.readResourceAsLines
 
 internal class Day05Test {
 
     @Test
     fun accPart1Test() {
-        val input = readResource("se/mottus/aoc2020/day05/puzzleinput.txt")
+        val input = readResourceAsLines("se/mottus/aoc2020/day05/puzzleinput.txt")
         assertEquals(828, part1(input))
     }
 
     @Test
     fun accPart2Test() {
-        val input = readResource("se/mottus/aoc2020/day05/puzzleinput.txt")
+        val input = readResourceAsLines("se/mottus/aoc2020/day05/puzzleinput.txt")
         assertEquals(565, part2(input))
     }
 
     @Test
     fun devPart1Test() {
-        val input = readResource("se/mottus/aoc2020/day05/test-puzzleinput.txt")
+        val input = readResourceAsLines("se/mottus/aoc2020/day05/test-puzzleinput.txt")
         assertEquals(820, part1(input))
     }
 

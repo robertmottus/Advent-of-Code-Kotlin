@@ -2,31 +2,31 @@ package se.mottus.aoc2020.day03
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import se.mottus.aoc2020.readResource
+import se.mottus.util.readResourceAsLines
 
 internal class Day03Test {
 
     @Test
     fun accPart1Test() {
-        val input = readResource("se/mottus/aoc2020/day03/puzzleinput.txt")
+        val input = readResourceAsLines("se/mottus/aoc2020/day03/puzzleinput.txt")
         assertEquals(257, countTrees(input))
     }
 
     @Test
     fun devPart1Test() {
-        val input = readResource("se/mottus/aoc2020/day03/test-puzzleinput.txt")
+        val input = readResourceAsLines("se/mottus/aoc2020/day03/test-puzzleinput.txt")
         assertEquals(7, countTrees(input))
     }
 
     @Test
     fun accTestPart2Test() {
-        val input = readResource("se/mottus/aoc2020/day03/puzzleinput.txt")
+        val input = readResourceAsLines("se/mottus/aoc2020/day03/puzzleinput.txt")
         assertEquals(1744787392, countTreesPart2(input))
     }
 
     @Test
     fun devPart2Test() {
-        val input = readResource("se/mottus/aoc2020/day03/test-puzzleinput.txt")
+        val input = readResourceAsLines("se/mottus/aoc2020/day03/test-puzzleinput.txt")
         assertEquals(336, countTreesPart2(input))
     }
 

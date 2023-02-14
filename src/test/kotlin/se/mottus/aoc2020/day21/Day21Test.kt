@@ -2,11 +2,11 @@ package se.mottus.aoc2020.day21
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import se.mottus.aoc2020.readResource
+import se.mottus.util.readResourceAsLines
 import kotlin.test.assertEquals
 
 internal class Day21Test {
-    val testInput = toFood(readResource("se/mottus/aoc2020/day21/test-puzzleinput.txt"))
+    val testInput = toFood(readResourceAsLines("se/mottus/aoc2020/day21/test-puzzleinput.txt"))
 
     @Test
     fun inputToFoodTest() {
@@ -61,7 +61,7 @@ internal class Day21Test {
 
     @Test
     fun part1AccTest() {
-        val foods = toFood(readResource("se/mottus/aoc2020/day21/puzzleinput.txt"))
+        val foods = toFood(readResourceAsLines("se/mottus/aoc2020/day21/puzzleinput.txt"))
         assertEquals(2517, frequencyOfNonAllergenIngredients(noAllergenIngredients(foods), ingredientFrequency(foods)))
     }
 
@@ -73,7 +73,7 @@ internal class Day21Test {
 
     @Test
     fun part2AccTest() {
-        val ingredients = allergenIngredients(toFood(readResource("se/mottus/aoc2020/day21/puzzleinput.txt"))).toSortedMap().values.joinToString(",")
+        val ingredients = allergenIngredients(toFood(readResourceAsLines("se/mottus/aoc2020/day21/puzzleinput.txt"))).toSortedMap().values.joinToString(",")
         assertEquals("rhvbn,mmcpg,kjf,fvk,lbmt,jgtb,hcbdb,zrb", ingredients)
     }
 }

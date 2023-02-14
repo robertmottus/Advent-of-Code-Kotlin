@@ -1,6 +1,6 @@
 package se.mottus.aoc2020.day05
 
-import se.mottus.aoc2020.readResource
+import se.mottus.util.readResourceAsLines
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTimedValue
 
@@ -8,7 +8,7 @@ import kotlin.time.measureTimedValue
 
 @ExperimentalTime
 fun main() {
-    val puzzleinput = readResource({}::class.java.`package`.name, "puzzleinput.txt")
+    val puzzleinput = readResourceAsLines({}::class.java.`package`.name, "puzzleinput.txt")
 
     runTimelogged("Part1 normal") {part1(puzzleinput)}
     runTimelogged("Part1 normal") {part1(puzzleinput)}

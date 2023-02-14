@@ -1,12 +1,12 @@
 package se.mottus.aoc2021.day01
 
-import se.mottus.aoc2020.readResource
+import se.mottus.util.readResourceAsLines
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTimedValue
 
 @ExperimentalTime
 fun main() {
-    val puzzleinput = readResource({}::class.java.`package`.name, "puzzleinput.txt")
+    val puzzleinput = readResourceAsLines({}::class.java.`package`.name, "puzzleinput.txt")
 
     val(result1, time1) = measureTimedValue {part1(puzzleinput)}
     println("Part1 result: $result1, took $time1 ms") // 1527 (8 ms)
