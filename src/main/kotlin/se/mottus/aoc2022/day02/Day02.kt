@@ -6,19 +6,11 @@ import se.mottus.aoc2022.day02.Shape.*
 /**
  * https://adventofcode.com/2022/day/2
  */
-fun part1(input: List<String>): Int =
-    linesToScoresPart1(input)
+fun part1(input: List<String>): Int = linesToScoresPart1(input)
+fun part2(input: List<String>): Int = linesToScoresPart2(input)
 
-fun part2(input: List<String>): Int =
-    linesToScoresPart2(input)
-
-enum class Shape {
-    ROCK, PAPER,  SCISSORS
-}
-
-enum class Outcome {
-    LOSE, DRAW, WIN
-}
+enum class Shape {ROCK, PAPER, SCISSORS}
+enum class Outcome {LOSE, DRAW, WIN}
 
 class Round(private val opponentShape: Shape, val myShape: Shape) {
     fun myOutcome() : Outcome=
