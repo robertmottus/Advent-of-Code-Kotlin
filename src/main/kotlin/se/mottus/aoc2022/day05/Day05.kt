@@ -24,21 +24,33 @@ fun initStacks(lines: List<String>): Array<MutableList<Char>> {
     return stacks
 }
 
-fun move(stacks: Array<MutableList<Char>>, count: Int, from: Int, to: Int) {
+fun movePart1(stacks: Array<MutableList<Char>>, count: Int, from: Int, to: Int) {
     for(i in 1..count) {
         val crate = stacks[from-1].removeLast()
         stacks[to-1].add(crate)
     }
 }
 
-fun executeMoves(stacks: Array<MutableList<Char>>, lines: List<String>) {
+fun movePart2(stacks: Array<MutableList<Char>>, count: Int, from: Int, to: Int) {
+    val crates = mutableListOf<Char>()
+    for(i in 1..count) {
+        crates.add(stacks[from-1].removeLast())
+    }
+    stacks[to-1].addAll(crates.asReversed())
+}
+
+fun executeMoves(stacks: Array<MutableList<Char>>, lines: List<String>, part1: Boolean = true) {
     //         move 1 from 2 to 1
     for (line in lines) {
         if (!line.contains("move")) continue
         val regex = "(move|from|to)".toRegex()
         val args = regex.split(line.trim()).toTypedArray()
         // args[0] is empty string before "move"
-        move(stacks, trim(args[1]), trim(args[2]), trim(args[3]))
+
+        if(part1)
+            movePart1(stacks, trim(args[1]), trim(args[2]), trim(args[3]))
+        else
+            movePart2(stacks, trim(args[1]), trim(args[2]), trim(args[3]))
     }
 }
 
@@ -47,5 +59,11 @@ fun trim(str: String) = str.trim().toInt()
 fun part1(input: List<String>): String {
     val stacks = initStacks(input)
     executeMoves(stacks, input)
+    return stacks.map { c -> c.last() }.joinToString("")
+}
+
+fun part2(input: List<String>): String {
+    val stacks = initStacks(input)
+    executeMoves(stacks, input, false)
     return stacks.map { c -> c.last() }.joinToString("")
 }

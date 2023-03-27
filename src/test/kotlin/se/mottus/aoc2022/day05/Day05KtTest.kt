@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import se.mottus.aoc2022.day05.executeMoves
 import se.mottus.aoc2022.day05.initStacks
-import se.mottus.aoc2022.day05.move
+import se.mottus.aoc2022.day05.movePart1
+import se.mottus.aoc2022.day05.movePart2
 
 internal class Day05KtTest {
     private val testInput = """
@@ -29,16 +30,29 @@ internal class Day05KtTest {
     }
 
     @Test
-    fun moveTest() {
+    fun movePart1Test() {
         val stacks = initStacks(testInput)
-        move(stacks, 1, 2, 1)
+        movePart1(stacks, 1, 2, 1)
         assertEquals(listOf('Z', 'N', 'D'), stacks[0])
         assertEquals(listOf('M', 'C'), stacks[1])
         assertEquals(listOf('P'), stacks[2])
-        move(stacks, 3, 1, 3)
+        movePart1(stacks, 3, 1, 3)
         assertEquals(emptyList<Char>(), stacks[0])
         assertEquals(listOf('M', 'C'), stacks[1])
         assertEquals(listOf('P', 'D', 'N', 'Z'), stacks[2])
+    }
+
+    @Test
+    fun movePart2Test() {
+        val stacks = initStacks(testInput)
+        movePart2(stacks, 1, 2, 1)
+        assertEquals(listOf('Z', 'N', 'D'), stacks[0])
+        assertEquals(listOf('M', 'C'), stacks[1])
+        assertEquals(listOf('P'), stacks[2])
+        movePart2(stacks, 3, 1, 3)
+        assertEquals(emptyList<Char>(), stacks[0])
+        assertEquals(listOf('M', 'C'), stacks[1])
+        assertEquals(listOf('P', 'Z', 'N', 'D'), stacks[2])
     }
 
     @Test

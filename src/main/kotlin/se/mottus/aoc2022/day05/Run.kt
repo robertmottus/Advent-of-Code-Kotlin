@@ -11,5 +11,8 @@ fun main() {
     val(result1, time1) = measureTimedValue {part1(puzzleinput)}
     println("Part1 result: $result1, took $time1 ms") // TGWSMRBPN (40 ms)
 
+    val(result2, time2) = measureTimedValue {part2(puzzleinput)}
+    println("Part2 result: $result2, took $time2 ms") // TZLTLWRNF (15 ms)
+
 }
 
