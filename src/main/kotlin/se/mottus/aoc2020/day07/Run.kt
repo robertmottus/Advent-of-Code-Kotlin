@@ -1,7 +1,6 @@
 package se.mottus.aoc2020.day07
 
 import se.mottus.util.readResource
-import se.mottus.util.readResourceAsLines
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTimedValue
 

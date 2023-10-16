@@ -51,13 +51,12 @@ fun parseBagType(rule: String): String {
     return rule.substringBefore("bag").trim()
 }
 
-fun parseBagContent(rule: String): List<String> {
-    if(rule.contains("contain no other bags"))
-        return emptyList()
+fun parseBagContent(rule: String): List<String> =
+    if (rule.contains("contain no other bags"))
+        emptyList()
     else
-        return rule.substringAfter("contain ")
-            .split(", ").map{ s -> stringToType(s)}
-}
+        rule.substringAfter("contain ")
+            .split(", ").map { s -> stringToType(s) }
 
 fun stringToType(str: String): String {
     // " 1 bright white bag " -> "bright white"
