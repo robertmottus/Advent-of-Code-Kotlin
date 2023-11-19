@@ -5,20 +5,16 @@ package se.mottus.aoc2021.day03
  */
 
 fun part1(input: List<String>): Int =
-    1
+    mostCommonBits(input).toInt(2) * mostCommonBits(input, false).toInt(2)
 
-
-fun mostCommonBits(binaryNumbers: List<String>): String {
-    val n = binaryNumbers[0].length
-    return binaryNumbers
-        .fold(emptyList<Int>()) { a, number -> updateFreqOfOnes(a, number) }
-        .fold("") { a, f -> a + freqOfOnes2mostCommonBit(f, n) }
-}
+fun mostCommonBits(input: List<String>, invertToLeastCommonBits: Boolean = false): String =
+    input[0].indices
+        .map {input.fold(0) {a, row -> a + (row[it] - '0') } }
+        .map { if(it * 2 > input.size) 1 else 0 }
+        .map { if(invertToLeastCommonBits) 1 - it else it }
+        .joinToString("")
 
 fun freqOfOnes2mostCommonBit(freq: Int, n: Int) = if(freq * 2 > n) 1 else 0
 
-fun updateFreqOfOnes(frequencies: List<Int>, number: String): kotlin.collections.List<Int> {
-    return frequencies.apply { this }
-}
 
 

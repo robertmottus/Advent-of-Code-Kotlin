@@ -20,21 +20,12 @@ internal class Day03KtTest {
     )
 
     @Test
-    fun mostCommonBitsTest() {
+    fun mostCommonBitTest() {
         assertEquals("1100", mostCommonBits(listOf("1101", "1000", "1100")))
+        assertEquals("0011", mostCommonBits(listOf("1101", "1000", "1100"), true))
+
         assertEquals("10110", mostCommonBits(testInput))
-
-        println("11001".toInt(2))
-    }
-
-    @Test
-    fun freq2mostCommonBitTest() {
-        assertEquals(1, freqOfOnes2mostCommonBit(9, 5))
-        assertEquals(1, freqOfOnes2mostCommonBit(5, 5))
-        assertEquals(1, freqOfOnes2mostCommonBit(3, 5))
-        assertEquals(0, freqOfOnes2mostCommonBit(2, 5))
-        assertEquals(0, freqOfOnes2mostCommonBit(0, 5))
-        assertEquals(0, freqOfOnes2mostCommonBit(-1, 5))
+        assertEquals("01001", mostCommonBits(testInput, true))
     }
 
 }
