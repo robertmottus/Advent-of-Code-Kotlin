@@ -13,8 +13,3 @@ fun mostCommonBits(input: List<String>, invertToLeastCommonBits: Boolean = false
         .map { if(it * 2 > input.size) 1 else 0 }
         .map { if(invertToLeastCommonBits) 1 - it else it }
         .joinToString("")
-
-fun freqOfOnes2mostCommonBit(freq: Int, n: Int) = if(freq * 2 > n) 1 else 0
-
-
-
