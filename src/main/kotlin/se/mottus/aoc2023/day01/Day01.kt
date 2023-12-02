@@ -61,7 +61,6 @@ private fun searchDigit(str: String): Int? {
 }
 
 fun sumNumbers(doc: List<String>, sumNumbers: (String) -> Int) =
-    doc.map {
-        l -> sumNumbers(l)
+    doc.sumOf { l ->
+        sumNumbers(l)
     }
-    .sum()
